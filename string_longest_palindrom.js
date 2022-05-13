@@ -10,7 +10,7 @@ const getDrome = (left, right, s) => {
         left--;
         right++;
     }
-    return [left + 1, right]
+    return [left + 1, right];
 }
 
 const longestPalindrome = (s) => {
