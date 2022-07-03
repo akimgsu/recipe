@@ -37,44 +37,51 @@ class ListNode {
     }
 }
 
-function printNodes(node) {
-    let cur_node = node;
-    while (cur_node) {
-        console.log(cur_node.data);
-        cur_node = cur_node.next;
-    }
-}
+const node = new ListNode(1);
+node.next = new ListNode(2);
+node.next.next = new ListNode(3);
+
+console.log(node);
+console.log(reverseList(node));
+
+// function printNodes(node) {
+//     let cur_node = node;
+//     while (cur_node) {
+//         console.log(cur_node.data);
+//         cur_node = cur_node.next;
+//     }
+// }
 
 
-class SingleLinked {
-    constructor() {
-        this.head = null;
-    }
+// class SingleLinked {
+//     constructor() {
+//         this.head = null;
+//     }
 
-    addAtHead(val) {
-        const node = new ListNode(val);
-        node.next = this.head;
-        this.head = node;
-    }
+//     addAtHead(val) {
+//         const node = new ListNode(val);
+//         node.next = this.head;
+//         this.head = node;
+//     }
 
-    addBack(val) {
-        const node = new ListNode(val);
-        let cur_node = this.head;
-        while (cur_node.next) {
-            cur_node = cur_node.next;
-        }
-        cur_node.next = node;
-    }
-}
+//     addBack(val) {
+//         const node = new ListNode(val);
+//         let cur_node = this.head;
+//         while (cur_node.next) {
+//             cur_node = cur_node.next;
+//         }
+//         cur_node.next = node;
+//     }
+// }
 
-const slist = new SingleLinked();
-slist.addAtHead(1);
-slist.addAtHead(2);
-slist.addAtHead(3);
-slist.addAtHead(4);
-slist.addAtHead(5);
+// const slist = new SingleLinked();
+// slist.addAtHead(1);
+// slist.addAtHead(2);
+// slist.addAtHead(3);
+// slist.addAtHead(4);
+// slist.addAtHead(5);
 
-printNodes(slist.head);
-const rev = reverseList(slist.head);
-console.log(printNodes(rev));
+// printNodes(slist.head);
+// const rev = reverseList(slist.head);
+// console.log(printNodes(rev));
 
