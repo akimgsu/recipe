@@ -25,3 +25,5 @@ const longestPalindrome = (s) => {
 }
 
 console.log(longestPalindrome("abba"));
+console.log(longestPalindrome("babad"));
+console.log(longestPalindrome("cbbd"));
