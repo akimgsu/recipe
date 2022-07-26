@@ -17,5 +17,5 @@ const moveZeroes = (nums, k) => {
         nums[i] = 0;
     }
 }
-
+console.log(moveZeroes([0, 1, 0, 3, 12]));
 console.log(moveZeroes([1, 2, 3, 4, 5, 6, 7]));

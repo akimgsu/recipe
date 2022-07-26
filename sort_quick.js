@@ -2,9 +2,7 @@
 912. Sort an Array 
 https://leetcode.com/problems/sort-an-array/#
 https://www.youtube.com/watch?v=8drJOS7Yeho&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw
-Given an array of integers nums, sort the array in ascending order.
-Input: nums = [5,1,1,2,0,0]
-Output: [0,0,1,1,2,5]
+pivot + partitioning
 */
 
 
@@ -51,6 +49,7 @@ const pivotIdx = (arr, left, right) => {
     }
     idx++;
     [arr[i], arr[r]] = [arr[r], arr[i]];
+    return idx;
 }
 
 const quickSort = (arr, left = 0, right = arr.length - 1) => {

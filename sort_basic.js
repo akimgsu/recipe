@@ -2,30 +2,30 @@
 912. Sort an Array (bubble)
 https://leetcode.com/problems/sort-an-array/#
 https://www.youtube.com/watch?v=8drJOS7Yeho&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw
+sending biggest# to left
 */
-
 const bubbleSort = (nums) => {
     let swap = true;
-    let count = 0;
+    let cnt = 0;
     while (swap) {
         swap = false;
-        for (let i = 0; i < nums.length - count; i++) {
+        for (let i = 0; i < nums.length - cnt; i++) {
             let j = i + 1;
             if (nums[i] > nums[j]) {
                 [nums[i], nums[j]] = [nums[j], nums[i]];
                 swap = true;
             }
         }
-        count++;
+        cnt++;
     }
+    return nums;
 }
-// const arr = [5, 2, 3, 1]
-// bubbleSort(arr);
-// console.log(arr);
+console.log(bubbleSort([-5, 2, 3, 1]));
 
 /*
 912. Sort an Array (selected)
 https://www.youtube.com/watch?v=_WOLD8ZKkRA&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw&index=2
+finding lowest value index and swiping
 */
 const selectedSort = (nums) => {
     for (let i = 0; i < nums.length; i++) {
@@ -44,6 +44,7 @@ console.log('selectedSort::', selectedSort([5, 2, 3, 1]));
 /*
 912. Sort an Array (insertion)
 https://www.youtube.com/watch?v=_WOLD8ZKkRA&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw&index=3
+extending sorted array...
 */
 const insertedSort = (nums) => {
     for (let i = 1; i < nums.length; i++) {
