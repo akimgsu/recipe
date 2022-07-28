@@ -1,0 +1,13 @@
+name: Git Action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Run 
+        run: pwd
+      - name: Run ls
+        run: ls -al
