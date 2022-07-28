@@ -8,7 +8,6 @@ let memoize = (fn) => {
     // };
     return function () {
         this.memo = this.memo || {};
-        console.log(arguments);
         let args = arguments[0];// == arguments[0]; [].slice.call(arguments); 
         console.log(args);
         if (typeof this.memo[args] === 'undefined') {
@@ -28,7 +27,7 @@ let fib = function (n) {
 }
 
 let memoizedFib = memoize(fib);
-console.log(memoizedFib(6));
+console.log(memoizedFib(7));
 
 
 function Foo(n) {
