@@ -7,23 +7,29 @@
 
 const longestSubstringWOrepeat = (s) => {
     let wStart = 0;
-    const sofar = new Map();
     let max = 0;
+    const sofar = new Map();
     for (let wEnd = 0; wEnd < s.length; wEnd++) {
-        let rightChar = s[wEnd];
-
-        if (!sofar.get(rightChar)) sofar.set(rightChar, 1);
-        else sofar.set(rightChar, sofar.get(rightChar) + 1);
-
-        while (sofar.get(rightChar) > 1) {
-            let leftChar = s[wStart];
-            if (sofar.get(leftChar) > 1) sofar.set(leftChar, sofar.get(leftChar) - 1);
-            else sofar.delete(leftChar);
+        let rChar = s[wEnd];
+        if (sofar.get(rChar)) {
+            sofar.set(rChar, sofar.get(rChar) + 1);
+        } else {
+            sofar.set(rChar, 1);
+        }
+        while (sofar.get(rChar) > 1) {
+            let lChar = s[wStart];
+            if (sofar.get(lChar) > 1) {
+                sofar.set(lChar, sofar.get(lChar) - 1);
+            } else {
+                sofar.delete(lChar);
+            }
             wStart++;
         }
-        max = Math.max(max, (wEnd - wStart) + 1);
+        max = Math.max(max, (wEnd - wStart) + 1)
     }
     return max;
 }
 
-console.log(longestSubstringWOrepeat("pwwkew"));
+console.log(longestSubstringWOrepeat("abcabcbb")); // 3
+console.log(longestSubstringWOrepeat("bbbbb")); // 1
+console.log(longestSubstringWOrepeat("pwwkew")); // 3

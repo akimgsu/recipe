@@ -1,15 +1,10 @@
 /*
-912. Sort an Array 
+912. Sort an Array (merging sort or concur and divided )
 https://leetcode.com/problems/sort-an-array/#
-https://www.youtube.com/watch?v=8drJOS7Yeho&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw
-Given an array of integers nums, sort the array in ascending order.
-Input: nums = [5,1,1,2,0,0]
-Output: [0,0,1,1,2,5]
+https://www.youtube.com/watch?v=RUUTazjpFWQ&list=PLrClazTqVpJl1yRzqUmxrYO-KKiMvN7Pw&index=4
 */
 
-
-// make tree o(nlogn) = t, o(n) = s
-const merge = (nums, nums2) => {
+const mergingHelper = (arr, nums2) => {
     const result = [];
     let i = 0;
     let j = 0;
@@ -32,14 +27,17 @@ const merge = (nums, nums2) => {
     }
     return result
 }
-
-const mergedSort = (nums) => {
-    if (nums.length <= 1) return nums;
-    let mid = Math.floor(nums.length / 2);
-    let left = mergedSort(nums.slice(0, mid));
-    let right = mergedSort(nums.slice(mid));
-
-    return merge(left, right);
+const mergedSort = (arr) => {
+    if (arr.length <= 1) return nums;
+    let mid = Math.floor(arr.length / 2);
+    let left = mergedSort(arr.slice(0, mid));
+    let right = mergedSort(arr.slice(mid));
+    // console.log('left:::', left, 'end');
+    // console.log('right:::', right, 'end');
+    return mergingHelper(left, right);
 }
 
-console.log(mergedSort([5, 1, 1, 2, 0, 0]));
+
+
+console.log(mergedSort([6, 5, 4, 3, 2, 1]));
+// console.log(mergedSort([5, 1, 1, 2, 0, 0]));

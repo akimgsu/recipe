@@ -1,17 +1,32 @@
 /*
 438. Find All Anagrams in a String
 https://leetcode.com/problems/find-all-anagrams-in-a-string/
+https://www.youtube.com/watch?v=Q-7-ErtYr5c&list=PLrClazTqVpJmY0TcHROxfaz62i31uiFzr&index=6
 Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-
-Input: s = "cbaebabacd", p = "abc"
-Output: [0,6]
-Explanation:
-The substring with start index = 0 is "cba", which is an anagram of "abc".
-The substring with start index = 6 is "bac", which is an anagram of "abc".
-
-https://www.youtube.com/watch?v=Q-7-ErtYr5c&list=PLrClazTqVpJmY0TcHROxfaz62i31uiFzr&index=6
+Input: s = "cbaebabacd", p = "abc" Output: [0,6]
 */
+
+const findCandidates = (str, len) => {
+    const result = [];
+    for (let i = 0; i <= str.length - len; i++) {
+        result.push(str.slice(i, i + len));
+    }
+    return result;
+}
+
+const findAnagrams = (str, tStr) => {
+    const result = []
+    const tLength = tStr.length;
+    const candidates = findCandidates(str, tLength);
+    const sortedStrs = candidates.map(word => word.split('').sort().join(''));
+    sortedStrs.forEach((elem, idx) => {
+        if (elem === tStr) result.push(idx);
+    });
+    return result;
+}
+console.log(findAnagrams("cbaebabacd", "abc"));
+console.log(findAnagrams("abab", "ab")); // [0,1,2]
 
 const arrayValuesEqual = (arr1, arr2) => {
     for (let i = 0; i < arr1.length; i++) {
@@ -43,7 +58,8 @@ const findAnagram = (s, p) => {
     }
     return result;
 }
-
+//console.log(findAnagram2("cbaebabacd", "abc"));
+// console.log(findAnagram("baa", "aa"));
 /*
 function shallowEqual(object1, object2) {
     const keys1 = Object.keys(object1);
@@ -83,5 +99,3 @@ const findAnagram2 = (s, p) => {
     return result;
 }
 */
-//console.log(findAnagram2("cbaebabacd", "abc"));
-console.log(findAnagram("baa", "aa"));
