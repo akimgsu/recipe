@@ -37,8 +37,17 @@ const twoSum = (nums, target) => {
         }
     }
 }
+const twoSum2 = (nums, t) => {
+    const hash = nums.reduce((p, v, i) => ({ ...p, [v]: i }), {});
+    for (let i = 0; i < nums.length; i++) {
+        let pk = t - nums[i];
+        if (hash[pk] && hash[pk] !== i) {
+            return [i, hash[pk]];
+        }
+    }
+}
 
-console.log(twoSum([15, 2, 7, 11], 9));
+console.log(twoSum2([15, 2, 7, 11], 9));
 
 
 

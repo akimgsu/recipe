@@ -1,13 +1,30 @@
 /*
+https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+*/
+const minRemoveToMakeValid = (s) => {
+    const arr = s.split('');
+    const stack = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === ')') {
+            if (stack.length) stack.pop();
+            else delete arr[i];
+        } else if (arr[i] === '(') {
+            stack.push(i);
+        }
+    }
+    for (let i = 0; i < stack.length; i++) {
+        delete arr[stack[i]];
+    }
+    return arr.join('');
+}
+// console.log(minRemoveToMakeValid('lee(t(c)o)de)'));
+// console.log(minRemoveToMakeValid('))(('));
+console.log(minRemoveToMakeValid('))((a)'));
+
+/*
 20. Valid Parentheses 
 https://leetcode.com/problems/valid-parentheses/#
 https://www.youtube.com/watch?v=HhBo1fckgBM&list=PLrClazTqVpJnoLCprxP1yIjIzAU8HINcY&index=9
-Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-An input string is valid if:
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
-Input: s = "()"
-Output: true
 */
 const isValid = (s) => {
     const stack = [];
