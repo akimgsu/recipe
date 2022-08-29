@@ -9,14 +9,31 @@ class TreeNode {
         this.right = right === undefined ? null : right;
     }
 }
-const root = TreeNode(7);
-root.left = TreeNode(-2);
-root.right = TreeNode(5);
-root.left.left = TreeNode(3);
-root.left.right = TreeNode(15);
-root.right.left = TreeNode(8);
-root.right.right = TreeNode(-5);
+const root = new TreeNode(7);
+root.left = new TreeNode(-2);
+root.right = new TreeNode(5);
+root.left.left = new TreeNode(3);
+root.left.right = new TreeNode(15);
+root.right.left = new TreeNode(8);
+root.right.right = new TreeNode(-5);
 
 const pathSum = (root, t) => {
-
+    if (!root) return [];
+    const res = [];
+    const helper = (root, t, sub) => {
+        sub.push(root.val);
+        if (!root.left && !root.right && root.val === t) {
+            res.push([...sub]);
+            sub.pop();
+            return;
+        }
+        const newTargetSum = t - root.val;
+        if (root.left) helper(root.left, newTargetSum, sub);
+        if (root.right) helper(root.right, newTargetSum, sub);
+        sub.pop();
+    }
+    helper(root, t, []);
+    return res;
 };
+
+console.log(pathSum(root, 20));
