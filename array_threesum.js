@@ -4,39 +4,38 @@
 https://leetcode.com/problems/3sum/
 https://www.youtube.com/watch?v=K8bmvM2_ZZQ&list=PLrClazTqVpJmJOUmYf6wvP1m-ay1y7ui2&index=2
 */
-const twoSumSub = (j, t, nums) => {
+const helper = (j, t, nums) => {
     let k = nums.length - 1;
-    let result = [];
+    let res = [];
     while (j < k) {
-        let l = nums[j];
-        let r = nums[k];
-        if (l + r < t) {
-            j++;
-        } else if (l + r > t) {
-            k--;
+        const l = nums[j];
+        const r = nums[k];
+        if (l + r > t) {
+            k -= 1;
+        } else if (l + r < t) {
+            j += 1;
         } else {
-            result.push([t * -1, l, r]);
-            // remove duplicated values
-            while (j < k && nums[j] === nums[j + 1]) j++;
-            while (j < k && nums[k] === nums[k - 1]) k--;
-            j++;
-            k--;
+            res.push([t * -1, l, r]);
+            while (j < k && nums[j] === nums[j + 1]) j += 1;
+            while (j < k && nums[k] === nums[k - 1]) k -= 1;
+            j += 1;
+            k -= 1;
         }
     }
-    return result;
+    return res;
 }
-const threeSumZero = async (nums) => {
-    const result = [];
+const threeSumZero = (nums) => {
+    const res = [];
     nums.sort((a, b) => a - b);
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] === nums[i - 1]) continue;
-        const target = nums[i] * -1;
-        const subResult = await twoSumSub(i + 1, target, nums);
-        result.push(...subResult);
+        const t = nums[i] * -1;
+        const subRes = helper(i + 1, t, nums);
+        res.push(subRes);
     }
-    return result;
+    return res;
 }
-// console.log('threeSumZero:', threeSumZero([-1, 0, 1, 2, -1, -4]))
+console.log('threeSumZero:', threeSumZero([-1, 0, 1, 2, -1, -4]))
 
 
 /*
@@ -128,7 +127,7 @@ const sum4Target = (nums, t) => {
     }
     return result;
 }
-console.log("test:", sum4Target([1, 0, -1, 0, -2, 2], 0))
+// console.log("test:", sum4Target([1, 0, -1, 0, -2, 2], 0))
 /*
 3sum Target 
 */

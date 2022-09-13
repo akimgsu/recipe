@@ -1,5 +1,6 @@
 /*
-https://leetcode.com/problems/sort-colors/
+https://leetcode.com/problems/sort-colors/ 75. Sort Colors ( Dutch flag problem)
+sorted  
 */
 
 const sortColors2 = (nums) => {

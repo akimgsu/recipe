@@ -12,22 +12,38 @@ const findDuplicate = (nums) => {
         if (isDup) return nums[i];
     }
 }
-const findDuplicateGraph = (nums) => {
-    let fast = 0;
-    let slow = 0;
-    while (true) {
-        fast = nums[nums[fast]];
+// tortorise vs hale
+const findDuplicateGraph = function (nums) {
+    let slow = nums[0];
+    let fast = nums[nums[0]];
+    while (slow !== fast) { // we are guaranteed to have a cycle
         slow = nums[slow];
-
-        if (fast === slow) {
-            let pointer = 0;
-            while (pointer !== slow) {
-                pointer = nums[pointer];
-                slow = nums[slow];
-            }
-            return pointer;
-        }
+        fast = nums[nums[fast]];
     }
-}
+    slow = 0;
+    while (slow !== fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+    return slow;
+};
+
+// const findDuplicateGraph = (nums) => {
+//     let fast = 0;
+//     let slow = 0;
+//     while (true) {
+//         fast = nums[nums[fast]];
+//         slow = nums[slow];
+
+//         if (fast === slow) {
+//             let pointer = 0;
+//             while (pointer !== slow) {
+//                 pointer = nums[pointer];
+//                 slow = nums[slow];
+//             }
+//             return pointer;
+//         }
+//     }
+// }
 
 console.log(findDuplicateGraph([1, 3, 4, 2, 2]));

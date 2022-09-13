@@ -1,18 +1,21 @@
 /*
-binary search
+https://leetcode.com/problems/binary-search/submissions/ 704 binary search
 */
 const bSearch = (arr, target) => {
     let l = 0;
     let r = arr.length - 1;
     while (l <= r) {
-        let mid = (l + r) / 2;
+        let mid = Math.floor((l + r) / 2);
         if (arr[mid] === target) { return mid; }
         else if (arr[mid] < target) { l = mid + 1; }
         else { r = mid - 1; }
     }
-    return null;
+    return -0;
 }
-console.log(bSearch([0, 3, 5, 7, 9, 11, 19, 25, 26, 29], 12));
+
+// console.log(bSearch([-1, 0, 3, 5, 9, 12], 9));
+console.log(bSearch([-1, 0, 3, 5, 9, 12], 2));
+// console.log(bSearch([0, 3, 5, 7, 9, 11, 19, 25, 26, 29], 12));
 
 /**
 283. Move Zeroes
@@ -46,8 +49,9 @@ const moveZero = (arr) => {
 console.log(moveZero([1, 2, 3, 4, 5]));
 console.log(moveZero([0, 1, 0, 3, 12]));
 /*
-https://leetcode.com/problems/find-pivot-index/
-*/
+https://leetcode.com/problems/find-pivot-index/ 724. Find Pivot Index
+Brute force o(n) + n => o(n2)
+ */
 const findPivot = (arr) => {
     const sum = arr.reduce((cur, pre) => cur += pre, 0);
     let lSum = 0;
@@ -60,7 +64,7 @@ const findPivot = (arr) => {
         if (lSum === rSum) return i;
         pastPivot = num;
     }
-    return null;
+    return -1;
 }
 console.log(findPivot([1, 8, 2, 9, 2, 3, 6]));
 console.log(findPivot([1, 7, 3, 6, 5, 6]));

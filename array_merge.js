@@ -22,3 +22,25 @@ const merge = (arr) => {
 
 console.log('merge', merge([[15, 18], [1, 3], [2, 6], [8, 10]]));
 console.log('merge', merge([[1, 5], [3, 7], [10, 15], [8, 16]]));
+
+/*
+57. Insert Interval
+https://leetcode.com/problems/insert-interval/submissions/
+*/
+const insert = function (intervals, newInterval) {
+    intervals.push(newInterval);
+    intervals.sort((a, b) => a[0] - b[0]);
+    const result = [intervals[0]];
+    for (const i of intervals) {
+        let preE = result[result.length - 1][1];
+        let currS = i[0];
+        let currE = i[1];
+        if (preE >= currS) {
+            result[result.length - 1][1] = Math.max(preE, currE)
+        } else {
+            result.push(i);
+        }
+    }
+    return result;
+};
+console.log('insert', insert([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]));

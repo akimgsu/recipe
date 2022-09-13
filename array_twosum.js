@@ -25,15 +25,14 @@ var twoSum = function(nums, target) {
 */
 
 const twoSum = (nums, target) => {
-    const hash = {};
+    const hash = {}
     for (let i = 0; i < nums.length; i++) {
-        let val = nums[i];
-        hash[val] = i;
+        hash[nums[i]] = i;
     }
     for (let i = 0; i < nums.length; i++) {
-        let potentialKey = target - nums[i];
-        if (hash[potentialKey] && hash[potentialKey] !== i) {
-            return [i, hash[potentialKey]];
+        const key = target - nums[i];
+        if (hash[key] && hash[key] !== i) {
+            return [i, hash[key]];
         }
     }
 }
