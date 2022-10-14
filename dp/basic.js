@@ -15,9 +15,9 @@ const fib_dp_recur = (n) => {
     }
     return arr[1];
 }
-console.time();
-console.log('fib_dp_recur', fib_dp_recur(1007));
-console.timeEnd();
+// console.time();
+// console.log('fib_dp_recur', fib_dp_recur(1007));
+// console.timeEnd();
 
 // top down 10000 to 2 --- make call stack issue with big number
 const fib_hash = (n, memo) => {
@@ -29,9 +29,9 @@ const fib_hash = (n, memo) => {
     }
     return memo[n];
 }
-// console.time();
-// console.log('hash', fib_hash(10000, {}));
-// console.timeEnd();
+console.time();
+console.log('hash', fib_hash(30, {}));
+console.timeEnd();
 
 const fib_recur = (n, arr = [0, 1]) => {
     if (n < arr.length) {
@@ -42,9 +42,9 @@ const fib_recur = (n, arr = [0, 1]) => {
         return fib;
     }
 }
-// console.time();
-// console.log('recur', fib_recur(10000));
-// console.timeEnd();
+console.time();
+console.log('recur', fib_recur(30));
+console.timeEnd();
 
 
 const fib_naive = (n) => {
@@ -52,5 +52,5 @@ const fib_naive = (n) => {
     return fib_naive(n - 1) + fib_naive(n - 2);
 }
 // console.time();
-// console.log('naive', fib_naive(35));
+// console.log('naive', fib_naive(30));
 // console.timeEnd();

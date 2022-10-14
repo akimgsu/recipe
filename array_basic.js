@@ -49,7 +49,8 @@ const moveZero = (arr) => {
 console.log(moveZero([1, 2, 3, 4, 5]));
 console.log(moveZero([0, 1, 0, 3, 12]));
 /*
-https://leetcode.com/problems/find-pivot-index/ 724. Find Pivot Index
+https://leetcode.com/problems/find-pivot-index/ 
+724. Find Pivot Index
 Brute force o(n) + n => o(n2)
  */
 const findPivot = (arr) => {
